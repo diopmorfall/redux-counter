@@ -5,7 +5,8 @@ const counterReducer = (state = 0, action) => { //* the reducer describes how th
 
     switch(action.type){
         case 'INCREMENT':
-            return state + 1;
+            return state + action.payload;
+            //? here I can access the payload that I took as a parameter of the action function
         case 'DECREMENT':
             return state - 1;
         default:

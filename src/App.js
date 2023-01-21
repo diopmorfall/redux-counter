@@ -11,7 +11,7 @@ export default function App() {
     return (
         <div className="App">
             <h1>Redux Counter {counter}</h1>
-            <button onClick={() => dispatch(increment())}>Increment</button>
+            <button onClick={() => dispatch(increment(7))}>Increment</button>
             <button onClick={() => dispatch(decrement())}>Decrement</button>
             <br/>
             <button onClick={() => dispatch(login())}>{isLogged ? 'Logout' : 'Login'}</button>
