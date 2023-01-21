@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './reducers/counter';
+import isLoggedReducer from './reducers/isLogged';
 
 const increment = () => {
     return {
@@ -17,24 +19,12 @@ const decrement = () => {
     }
 }
 
-const counterReducer = (state = 0, action) => { //* the reducer describes how the state gets transformed by the action
-    //? it needs the value of the state which we update, and the action
-
-    switch(action.type){
-        case 'INCREMENT':
-            return state + 1;
-        case 'DECREMENT':
-            return state - 1;
-        default:
-            return state; //! if we don't have a covered case, we should return the current state
-    }
-}
-
 const store = configureStore({
     //* we configure the store with a reducer object, that has all the reducers we need
-    //? they get combined because combineReducer() is called behind the scenes
+    //? they get combined because combineReducers() is called behind the scenes
     reducer: {
-        counter: counterReducer
+        counter: counterReducer,
+        isLogged: isLoggedReducer
     }
 }); //* the store is kinda a globalized state, that is accessible to any component
 store.subscribe(() => console.log(store.getState())) //? getState returns the current state
